@@ -1,3 +1,5 @@
+import FormField from "@/components/FormField";
+
 export default function Home() {
-  return <div className="text-red-500">Hello form</div>;
+  return <FormField />;
 }
