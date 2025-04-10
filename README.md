@@ -3,8 +3,7 @@
 This is a multi step form project.
 
 Live link:
-
-- (https://form-multi-step-sigma.vercel.app/)
+https://form-multi-step-sigma.vercel.app/
 
 ## **Tech Stack**
 
