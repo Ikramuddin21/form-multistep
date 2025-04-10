@@ -1,10 +1,23 @@
+import { useMutation } from "@tanstack/react-query";
+import { fakePostFormData } from "@/lib/api";
+
 const Summary = ({ formData, reset, setStep }) => {
+  // form data mutation
+  const { mutate, isPending } = useMutation({
+    mutationFn: fakePostFormData,
+    onSuccess: () => {
+      alert("Data Submitted Successfully!");
+      reset();
+      setStep(1);
+    },
+  });
+
+  // handle final submit
   const handleFinalSubmit = () => {
+    mutate(formData);
     console.log("Submitted data:", formData);
-    alert("Form submitted! Check console for data.");
-    reset();
-    setStep(1);
   };
+
   return (
     <>
       <div className="mt-6">
@@ -28,14 +41,14 @@ const Summary = ({ formData, reset, setStep }) => {
           </p>
         </div>
       </div>
-      {/* <div className="mt-6"> */}
+
       <button
         onClick={handleFinalSubmit}
-        className="mt-6 cursor-pointer bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        disabled={isPending}
+        className="mt-6 cursor-pointer bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 disabled:cursor-not-allowed"
       >
-        Submit
+        {isPending ? "Submitting..." : "Submit"}
       </button>
-      {/* </div> */}
     </>
   );
 };

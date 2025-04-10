@@ -75,27 +75,9 @@ const FormField = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center my-6">
+    <div className="flex items-center justify-center mb-6 mt-12 px-6">
       <div className="max-w-[600px] w-full">
-        <div className="w-full relative">
-          {step !== 1 && (
-            <button
-              onClick={() => setStep(step - 1)}
-              className="cursor-pointer absolute left-0 bg-gray-700 text-white rounded px-2 py-1"
-            >
-              Previous
-            </button>
-          )}
-          {step !== 3 && step !== 4 && (
-            <button
-              onClick={handleNext}
-              className="cursor-pointer absolute right-0 bg-gray-700 text-white rounded px-2 py-1"
-            >
-              Next
-            </button>
-          )}
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-12">
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-12">
           {step === 1 && (
             <PersonalFormField register={register} errors={errors} />
           )}
@@ -118,6 +100,25 @@ const FormField = () => {
             <Summary formData={formData} reset={reset} setStep={setStep} />
           )}
         </form>
+
+        <div className="w-full relative">
+          {step !== 1 && (
+            <button
+              onClick={() => setStep(step - 1)}
+              className="cursor-pointer absolute left-0 bg-gray-700 text-white rounded px-2 py-1"
+            >
+              Previous
+            </button>
+          )}
+          {step !== 3 && step !== 4 && (
+            <button
+              onClick={handleNext}
+              className="cursor-pointer absolute right-0 bg-gray-700 text-white rounded px-2 py-1"
+            >
+              Next
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
